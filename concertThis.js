@@ -58,15 +58,23 @@ function printEvents(events) {
         let event = events[i];
 
         // Print venue name
-        console.log(`\n${event.venue.name}`);
+        console.log(`\nVenue:    ${event.venue.name}`);
 
-        // Print event city, region, and country
-        console.log(`${event.venue.city}, ${event.venue.region} ${event.venue.country}`);
+        // If there is no region
+        if (event.venue.region === "") {
+            // Print event city and country
+            console.log(`Location: ${event.venue.city}, ${event.venue.country}`);
+        } else {  // If there is a region
+            // Print event city, region, and country
+            console.log(`Location: ${event.venue.city}, ${event.venue.region} ${event.venue.country}`);
+        }
 
-        // Save event time as a moment object and print it as "MM/DD/YYYY h:mm A"
-        let momentEventTime = moment(event.datetime, "YYYY-MM-DDTHH:mm:ss");
-        let momentEventTimeFormatted = momentEventTime.format("MM/DD/YYYY h:mm A");
-        console.log(momentEventTimeFormatted);
+        // Save event data and time as a moment object and print it
+        let momentEvent = moment(event.datetime, "YYYY-MM-DDTHH:mm:ss");
+        let momentEventDate = momentEvent.format("MM/DD/YYYY");
+        let momentEventTime = momentEvent.format("h:mm A");
+        console.log(`Date:     ${momentEventDate}`);
+        console.log(`Time:     ${momentEventTime}`);
     }
     console.log();
 }
