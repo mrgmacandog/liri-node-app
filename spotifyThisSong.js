@@ -16,7 +16,7 @@ const spotify = new Spotify(keys.spotify);
  */
 function spotifyThisSong(song) {
     // If the user includes a song name
-    if (process.argv.length > 3) {
+    if (song !== "") {
         // Search the API for the song name given
         spotify.search({ type: 'track', query: song }, function (err, data) {
             // If there is an error, print it

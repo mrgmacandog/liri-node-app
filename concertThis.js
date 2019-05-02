@@ -26,7 +26,7 @@ function getEvents(artist) {
     console.log(`\n${artist.toUpperCase()}`);
 
     // Save the artist name spaced by "%20"
-    let artistFormatted = process.argv.slice(3).join("%20");
+    let artistFormatted = artist.replace(" ", "%20");
 
     // URL for API endpoint with the artist name
     let queryUrl = `https://rest.bandsintown.com/artists/${artistFormatted}/events?app_id=codingbootcamp`;
