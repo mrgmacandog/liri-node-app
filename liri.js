@@ -13,8 +13,10 @@ const movieThis = require("./movieThis.js");
 // Include the doWhatItSays package
 const doWhatItSays = require("./doWhatItSays.js");
 
+// Command inputted
 let command = process.argv[2];
 
+// Search item inputted
 let searchItem = process.argv.slice(3).join(" ");
 
 // Decide which command will run
@@ -34,6 +36,7 @@ switch (command) {
     case "do-what-it-says":
         doWhatItSays();
         break;
+
     default:
         console.log("\nError: Missing or incorrect command.");
         console.log("    Please use one of the following commands:");

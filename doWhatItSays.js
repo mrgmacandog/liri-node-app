@@ -11,11 +11,13 @@ const spotifyThisSong = require("./spotifyThisSong.js");
 const movieThis = require("./movieThis.js");
 
 /**
- * 
+ * Reads in random.txt and performs the command with the search item
+ *     random.txt must be formatted: {command},{search item}
  */
 function doWhatItSays() {
     // Read random.txt
     fs.readFile("random.txt", "utf8", function (err, data) {
+        // If there is an error, return it
         if (err) {
             return console.log(err);
         }
@@ -23,32 +25,26 @@ function doWhatItSays() {
         // Split the command and input
         data = data.split(",");
 
-        console.log(data);
-
         // Decide which command will run
         switch (data[0]) {
             case "concert-this":
-                concertThis();
+                concertThis(data[1]);
                 break;
 
             case "spotify-this-song":
-                spotifyThisSong();
+                spotifyThisSong(data[1]);
                 break;
 
             case "movie-this":
-                movieThis();
+                movieThis(data[1]);
                 break;
 
-            case "do-what-it-says":
-                doWhatItSays();
-                break;
             default:
-                console.log("\nError: Missing or incorrect command.");
+                console.log("\nError: First item in the file is missing or an incorrect command.");
                 console.log("    Please use one of the following commands:");
                 console.log("        concert-this");
                 console.log("        spotify-this-song");
-                console.log("        movie-this");
-                console.log("        do-what-it-says\n");
+                console.log("        movie-this\n");
         }
     });
 }
