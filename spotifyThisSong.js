@@ -14,12 +14,13 @@ const spotify = new Spotify(keys.spotify);
  * Looks up and prints information for a song
  */
 function spotifyThisSong() {
-    // TODO Get user input for song name
+    // Save song name into a variable
+    let song = process.argv.slice(3).join(" ");
 
     // If the user includes a song name
     if (process.argv.length > 3) {
         // Search the API for the song name given
-        spotify.search({ type: 'track', query: 'All the Small Things' }, function (err, data) {
+        spotify.search({ type: 'track', query: song }, function (err, data) {
             // If there is an error, print it
             if (err) {
                 return console.log('Error occurred: ' + err);
@@ -28,7 +29,7 @@ function spotifyThisSong() {
                 printSongInfo(data.tracks.items[0]);
             }
         });
-    } else {  // If the user doesn't includ a song name
+    } else {  // If the user doesn't include a song name
         // Get info from the API for The Sign by Ace of Base
         //     Track id for The Sign by Ace of Base: 0hrBpAOgrt8RXigk83LLNE
         spotify.request('https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE')
@@ -58,7 +59,7 @@ function printSongInfo(songInfo) {
     // Print artist(s) names
     let artists = songInfo.artists[0].name;
     for (let i = 1; i < songInfo.artists.length; i++) {
-        artist += `, ${songInfo.artists[i].name}`;
+        artists += `, ${songInfo.artists[i].name}`;
     }
     console.log(`Artist(s): ${artists}`);
 
