@@ -1,19 +1,22 @@
 // Include the dotenv npm package and run the config function
 require("dotenv").config();
 
-// Include the keys package
-const keys = require("./keys.js");
+// // Include the keys package
+// const keys = require("./keys.js");
 
 // Include the concertThis package
 const concertThis = require("./concertThis.js");
 
-// Include the node-spotify-api npm package
-const Spotify = require("node-spotify-api");
+// Include the spotifyThisSong package
+const spotifyThisSong = require("./spotifyThisSong.js");
 
-// Create Spotify object and save it into a variable
-const spotify = new Spotify(keys.spotify);
+// // Include the node-spotify-api npm package
+// const Spotify = require("node-spotify-api");
 
-const command = process.argv[2];
+// // Create Spotify object and save it into a variable
+// const spotify = new Spotify(keys.spotify);
+
+let command = process.argv[2];
 
 // Decide which command will run
 switch (command) {
