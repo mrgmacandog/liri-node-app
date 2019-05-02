@@ -11,11 +11,60 @@ const Spotify = require("node-spotify-api");
 const spotify = new Spotify(keys.spotify);
 
 /**
- * Looks up information for a song
+ * Looks up and prints information for a song
  */
 function spotifyThisSong() {
-    console.log("In spotifyThisSong.js");
-    console.log(spotify);
+    // TODO Get user input for song name
+
+    // If the user includes a song name
+    if (process.argv.length > 3) {
+        // Search the API for the song name given
+        spotify.search({ type: 'track', query: 'All the Small Things' }, function (err, data) {
+            // If there is an error, print it
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            } else {  // No error
+                // Print song info
+                printSongInfo(data.tracks.items[0]);
+            }
+        });
+    } else {  // If the user doesn't includ a song name
+        // Get info from the API for The Sign by Ace of Base
+        //     Track id for The Sign by Ace of Base: 0hrBpAOgrt8RXigk83LLNE
+        spotify.request('https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE')
+            // If successful
+            .then(function (data) {
+                // Print song info
+                printSongInfo(data);
+            })
+            // If there's an error
+            .catch(function (err) {
+                console.error('Error occurred: ' + err);
+            });
+    }
 }
+
+/**
+ * Prints song, album, and artist name(s). Also prints a link to a 30 second preview of the song
+ * @param {Object} songInfo 
+ */
+function printSongInfo(songInfo) {
+    // Print song name
+    console.log(`\nSong:      ${songInfo.name}`);
+
+    // Print album name
+    console.log(`Album:     ${songInfo.album.name}`);
+
+    // Print artist(s) names
+    let artists = songInfo.artists[0].name;
+    for (let i = 1; i < songInfo.artists.length; i++) {
+        artist += `, ${songInfo.artists[i].name}`;
+    }
+    console.log(`Artist(s): ${artists}`);
+
+    // Print song preview url
+    console.log(`Preview:   ${songInfo.preview_url}\n`);
+}
+
 // Export the spotifyThisSong function so that it can be included in other files
 module.exports = spotifyThisSong;
