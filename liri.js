@@ -4,6 +4,8 @@ require("dotenv").config();
 // Save keys into a variable
 const keys = require("./keys.js");
 
+const concertThis = require("./concertThis.js");
+
 // Save node-spotify-api libray into a variable
 const Spotify = require('node-spotify-api');
 
@@ -38,18 +40,18 @@ switch (command) {
         console.log("    do-what-it-says");
 }
 
-function concertThis() {
-    console.log("In concertThis");
-}
+// function concertThis() {
+//     console.log("In concertThis");
+// }
 
-function spotifyThisSong() {
-    console.log("In spotifyThisSong");
-}
+// function spotifyThisSong() {
+//     console.log("In spotifyThisSong");
+// }
 
-function movieThis() {
-    console.log("In movieThis");
-}
+// function movieThis() {
+//     console.log("In movieThis");
+// }
 
-function doWhatItSays() {
-    console.log("In doWhatItSays");
-}
+// function doWhatItSays() {
+//     console.log("In doWhatItSays");
+// }
