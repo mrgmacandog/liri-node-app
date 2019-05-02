@@ -2,16 +2,14 @@
 const axios = require("axios");
 
 /**
- * Looks up info for a movie
+ * Looks up info for the passed in movie
+ * @param {string} movie
  */
-function movieThis() {
-    // Initialize movie to default "Mr. Nobody"
-    let movie = "Mr.%20Nobody,";
-    
-    // If the user inputted a movie name
-    if (process.argv.length > 3) {
-        // Change movie to the input movie name
-        movie = process.argv.slice(3).join("%20");
+function movieThis(movie) {
+    // If the movie is blank
+    if (movie === "") {
+        // Set movie to Mr. Nobody
+        movie = "Mr.%20Nobody,";
     }
 
     // Get info for the movie

@@ -28,7 +28,7 @@ switch (command) {
         break;
 
     case "movie-this":
-        movieThis();
+        movieThis(searchItem);
         break;
 
     case "do-what-it-says":
