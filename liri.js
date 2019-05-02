@@ -10,6 +10,9 @@ const concertThis = require("./concertThis.js");
 // Include the spotifyThisSong package
 const spotifyThisSong = require("./spotifyThisSong.js");
 
+// Include the movieThis package
+const movieThis = require("./movieThis.js");
+
 // // Include the node-spotify-api npm package
 // const Spotify = require("node-spotify-api");
 
