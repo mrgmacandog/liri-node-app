@@ -5,29 +5,31 @@ const axios = require("axios");
 const moment = require("moment");
 
 /**
- * Looks up events for artist if an artist is given
+ * Looks up events for the passed in artist
+ * @param {string} artist 
  */
-function concertThis() {
+function concertThis(artist) {
     // If user includes artist name
-    if (process.argv.length > 3) {
-        getEvents();
+    if (artist !== "") {
+        getEvents(artist);
     } else {  // If user doesn't inlclude artist name
         console.log("\nError: Please include an artist name.\n")
     }
 };
 
 /**
- * Requests events from the API for an artist
+ * Requests events from the API for the passed in artist
+ * @param {string} artist 
  */
-function getEvents() {
+function getEvents(artist) {
     // Print the artist name
-    console.log(`\n${process.argv.slice(3).join(" ").toUpperCase()}`);
+    console.log(`\n${artist.toUpperCase()}`);
 
     // Save the artist name spaced by "%20"
-    let artist = process.argv.slice(3).join("%20");
+    let artistFormatted = process.argv.slice(3).join("%20");
 
     // URL for API endpoint with the artist name
-    let queryUrl = `https://rest.bandsintown.com/artists/${artist}/events?app_id=codingbootcamp`;
+    let queryUrl = `https://rest.bandsintown.com/artists/${artistFormatted}/events?app_id=codingbootcamp`;
 
     // Create request with axios with URL to the API
     axios.get(queryUrl)

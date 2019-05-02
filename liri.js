@@ -15,10 +15,12 @@ const doWhatItSays = require("./doWhatItSays.js");
 
 let command = process.argv[2];
 
+let searchItem = process.argv.slice(3).join(" ");
+
 // Decide which command will run
 switch (command) {
     case "concert-this":
-        concertThis();
+        concertThis(searchItem);
         break;
 
     case "spotify-this-song":

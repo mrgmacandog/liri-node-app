@@ -1,6 +1,15 @@
 // Include the fs npm package to read files
 var fs = require("fs");
 
+// Include the concertThis package
+const concertThis = require("./concertThis.js");
+
+// Include the spotifyThisSong package
+const spotifyThisSong = require("./spotifyThisSong.js");
+
+// Include the movieThis package
+const movieThis = require("./movieThis.js");
+
 /**
  * 
  */
@@ -15,6 +24,32 @@ function doWhatItSays() {
         data = data.split(",");
 
         console.log(data);
+
+        // Decide which command will run
+        switch (data[0]) {
+            case "concert-this":
+                concertThis();
+                break;
+
+            case "spotify-this-song":
+                spotifyThisSong();
+                break;
+
+            case "movie-this":
+                movieThis();
+                break;
+
+            case "do-what-it-says":
+                doWhatItSays();
+                break;
+            default:
+                console.log("\nError: Missing or incorrect command.");
+                console.log("    Please use one of the following commands:");
+                console.log("        concert-this");
+                console.log("        spotify-this-song");
+                console.log("        movie-this");
+                console.log("        do-what-it-says\n");
+        }
     });
 }
 
