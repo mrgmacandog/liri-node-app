@@ -1,13 +1,14 @@
-// Initialize dotenv library
+// Include the dotenv npm package and run the config function
 require("dotenv").config();
 
-// Save keys into a variable
+// Include the keys package
 const keys = require("./keys.js");
 
+// Include the concertThis package
 const concertThis = require("./concertThis.js");
 
-// Save node-spotify-api libray into a variable
-const Spotify = require('node-spotify-api');
+// Include the node-spotify-api npm package
+const Spotify = require("node-spotify-api");
 
 // Create Spotify object and save it into a variable
 const spotify = new Spotify(keys.spotify);
@@ -32,12 +33,12 @@ switch (command) {
         doWhatItSays();
         break;
     default:
-        console.log("\n------------------ERROR------------------");
-        console.log("Please use one of the following commands:");
-        console.log("    concert-this");
-        console.log("    spotify-this-song");
-        console.log("    movie-this");
-        console.log("    do-what-it-says");
+        console.log("\nError: Missing or incorrect command.");
+        console.log("    Please use one of the following commands:");
+        console.log("        concert-this");
+        console.log("        spotify-this-song");
+        console.log("        movie-this");
+        console.log("        do-what-it-says\n");
 }
 
 // function concertThis() {
