@@ -11,12 +11,10 @@ const Spotify = require("node-spotify-api");
 const spotify = new Spotify(keys.spotify);
 
 /**
- * Looks up and prints information for a song
+ * Looks up and prints information for the passed in song
+ * @param {string} song 
  */
-function spotifyThisSong() {
-    // Save song name into a variable
-    let song = process.argv.slice(3).join(" ");
-
+function spotifyThisSong(song) {
     // If the user includes a song name
     if (process.argv.length > 3) {
         // Search the API for the song name given

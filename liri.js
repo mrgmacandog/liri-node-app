@@ -24,7 +24,7 @@ switch (command) {
         break;
 
     case "spotify-this-song":
-        spotifyThisSong();
+        spotifyThisSong(searchItem);
         break;
 
     case "movie-this":
